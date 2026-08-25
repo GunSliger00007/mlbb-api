@@ -1,0 +1,30 @@
+{
+  "name": "mlbb-api",
+  "version": "0.0.1-alpha",
+  "description": "MLBB API",
+  "keywords": [
+    "mlbb",
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RexSE7EN/mlbb-api.git"
+  },
+  "license": "GPL-3.0-only",
+  "author": "RexSE7EN",
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
