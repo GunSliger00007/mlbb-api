@@ -13,18 +13,20 @@
   "license": "GPL-3.0-only",
   "author": "RexSE7EN",
   "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.3.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
   }
 }
