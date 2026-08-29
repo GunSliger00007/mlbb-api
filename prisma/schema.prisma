@@ -14,7 +14,7 @@ datasource db {
 model Hero {
   id          String      @id @default(uuid())
   name        String
-  role        String[]
+  role        Role[]  @default([UNDEFINED])
   description String?
   image       String?
   releaseDate DateTime @default(now())
@@ -22,6 +22,16 @@ model Hero {
   skins       Skin[]
 
   @@map("heroes")
+}
+
+enum Role {
+  ASSASSIN
+  FIGHTER
+  MAGE
+  MARKSMAN
+  SUPPORT
+  TANK
+  UNDEFINED
 }
 
 model Skill {
