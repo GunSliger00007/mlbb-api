@@ -18,7 +18,22 @@ model Hero {
   description String
   image       String
   releaseDate DateTime @default(now())
+  skills      Skill[]
   skins       Skin[]
+
+  @@map("heroes")
+}
+
+model Skill {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  image       String
+  cooldown    Float
+  heroId      String
+  hero        Hero     @relation(fields: [heroId], references: [id])
+
+  @@map("skills")
 }
 
 model Skin {
@@ -28,6 +43,8 @@ model Skin {
   image       String
   heroId      String
   hero        Hero     @relation(fields: [heroId], references: [id])
+
+  @@map("skins")
 }
 
 model Item {
@@ -37,6 +54,8 @@ model Item {
   image       String
   cost        Int
   cooldown    Float
+
+  @@map("items")
 }
 
 model Emblem {
@@ -45,6 +64,8 @@ model Emblem {
   description     String
   image           String
   emblemTalents   EmblemTalent[]
+
+  @@map("emblems")
 }
 
 model EmblemTalent {
@@ -54,6 +75,8 @@ model EmblemTalent {
   image       String
   emblemId    String
   emblem      Emblem   @relation(fields: [emblemId], references: [id])
+
+  @@map("emblem_talents")
 }
 
 model Spell {
@@ -62,12 +85,16 @@ model Spell {
   description String
   image       String
   cooldown    Float
+
+  @@map("spells")
 }
 
 model GameMode {
   id          String      @id @default(uuid())
   name        String
   description String
+
+  @@map("game_modes")
 }
 
 model Rank {
@@ -75,6 +102,8 @@ model Rank {
   name        String
   description String
   image       String
+
+  @@map("ranks")
 }
 
 
