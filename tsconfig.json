@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "types": ["node"],
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -11,5 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*", 
+    "**/*.ts",
+    "**/*.d.ts",
+  ]
 }

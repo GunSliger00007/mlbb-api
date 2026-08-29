@@ -1,11 +1,9 @@
 import express from "express";
+import { getAllHeroes, getHeroById } from "@/controllers/heroController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    message: 'Assume all the heroes are here'
-  });
-});
+router.get("/", getAllHeroes);
+router.get("/:id", getHeroById);
 
 export default router;
