@@ -14,9 +14,9 @@ datasource db {
 model Hero {
   id          String      @id @default(uuid())
   name        String
-  role        String
-  description String
-  image       String
+  role        String[]
+  description String?
+  image       String?
   releaseDate DateTime @default(now())
   skills      Skill[]
   skins       Skin[]
@@ -27,8 +27,8 @@ model Hero {
 model Skill {
   id          String      @id @default(uuid())
   name        String
-  description String
-  image       String
+  description String?
+  image       String?
   cooldown    Float
   heroId      String
   hero        Hero     @relation(fields: [heroId], references: [id])
@@ -40,7 +40,7 @@ model Skin {
   id          String      @id @default(uuid())
   name        String
   releaseDate DateTime @default(now())
-  image       String
+  image       String?
   heroId      String
   hero        Hero     @relation(fields: [heroId], references: [id])
 
@@ -50,10 +50,10 @@ model Skin {
 model Item {
   id          String      @id @default(uuid())
   name        String
-  description String
-  image       String
+  description String?
+  image       String?
   cost        Int
-  cooldown    Float
+  cooldown    Float?
 
   @@map("items")
 }
@@ -61,8 +61,8 @@ model Item {
 model Emblem {
   id              String      @id @default(uuid())
   name            String
-  description     String
-  image           String
+  description     String?
+  image           String?
   emblemTalents   EmblemTalent[]
 
   @@map("emblems")
@@ -71,8 +71,8 @@ model Emblem {
 model EmblemTalent {
   id          String      @id @default(uuid())
   name        String
-  description String
-  image       String
+  description String?
+  image       String?
   emblemId    String
   emblem      Emblem   @relation(fields: [emblemId], references: [id])
 
@@ -82,8 +82,8 @@ model EmblemTalent {
 model Spell {
   id          String      @id @default(uuid())
   name        String
-  description String
-  image       String
+  description String?
+  image       String?
   cooldown    Float
 
   @@map("spells")
@@ -92,7 +92,7 @@ model Spell {
 model GameMode {
   id          String      @id @default(uuid())
   name        String
-  description String
+  description String?
 
   @@map("game_modes")
 }
@@ -100,12 +100,13 @@ model GameMode {
 model Rank {
   id          String      @id @default(uuid())
   name        String
-  description String
-  image       String
+  description String?
+  image       String?
 
   @@map("ranks")
 }
 
 
 // Tables
-// Heroes, Skins, Items, Emblems, Spells, Game Modes, Ranks 
+// Heroes, Skins, Items, Emblems, Spells, Game Modes,
+// Ranks , Skills, Attributes, Attributes Types
