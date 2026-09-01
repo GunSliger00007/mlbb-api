@@ -20,6 +20,7 @@ model Hero {
   releaseDate DateTime @default(now())
   skills      Skill[]
   skins       Skin[]
+  attributes  HeroAttribute?
 
   @@map("heroes")
 }
@@ -55,6 +56,30 @@ model Skin {
   hero        Hero     @relation(fields: [heroId], references: [id])
 
   @@map("skins")
+}
+
+model HeroAttribute {
+  id                String @id @default(uuid())
+  heroId            String @unique
+  hero              Hero   @relation(fields: [heroId], references: [id])
+
+  hp                Float
+  hpGrowth          Float?
+  hpRegen           Float?
+  mana              Float?
+  manaGrowth        Float?
+  manaRegen         Float?
+  physicalAttack    Float?
+  physicalAttackGrowth Float?
+  magicPower        Float?
+  physicalDefense   Float?
+  magicDefense      Float?
+  attackSpeed       Float?
+  attackSpeedGrowth Float?
+  movementSpeed     Float?
+  attackRange       Float?
+
+  @@map("hero_attributes")
 }
 
 model Item {
